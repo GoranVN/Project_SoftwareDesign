@@ -1,4 +1,4 @@
-package tickets;
+package Tickets;
 
 public abstract class RestaurantTicket extends Ticket{
     public RestaurantTicket(float price) {

@@ -1,4 +1,4 @@
-package tickets;
+package Tickets;
 
 public abstract class TaxiTicket extends Ticket{
     public TaxiTicket(float price) {

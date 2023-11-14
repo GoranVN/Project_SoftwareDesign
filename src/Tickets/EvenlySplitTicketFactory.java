@@ -1,4 +1,4 @@
-package tickets;
+package Tickets;
 
 public class EvenlySplitTicketFactory extends TicketFactory{
     public EvenlySplitTicketFactory() {

@@ -1,4 +1,4 @@
-package tickets;
+package Tickets;
 
 public abstract class Ticket {
     private float price;
