@@ -13,8 +13,10 @@ public class PersonDatabase extends AbstractDatabase{
     public void addEntry(Person p){
         this.PersonList.add(p);
     }
-
-    public Person getEntry(Person p){
-        return
+    public void deleteEntry(Person p){
+        PersonList.remove(p);
+    }
+    public ArrayList<Person> getEntries(ArrayList<Person> personList){
+        return personList;
     }
 }
