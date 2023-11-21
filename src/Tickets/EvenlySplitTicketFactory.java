@@ -1,22 +1,25 @@
 package Tickets;
 
+import java.util.ArrayList;
+import Person.*;
+
 public class EvenlySplitTicketFactory extends TicketFactory{
     public EvenlySplitTicketFactory() {
         super();
     }
 
-    public Ticket createTicket(String type, float price) {
+    public Ticket createTicket(String type, float price, Person person, ArrayList<Person> paidFor) {
         switch (type) {
             case "airplane":
-                return new EvenlySplitAirplaneTicket(price);
+                return new AirplaneTicket(price, new EvenlySplitDecorator(price, person, paidFor), person, paidFor);
             case "concert":
-                return new EvenlySplitConcertTicket(price);
+                return new ConcertTicket(price, new EvenlySplitDecorator(price, person, paidFor), person, paidFor);
             case "restaurant":
-                return new EvenlySplitRestaurantTicket(price);
+                return new RestaurantTicket(price, new EvenlySplitDecorator(price, person, paidFor), person, paidFor);
             case "taxi":
-                return new EvenlySplitTaxiTicket(price);
+                return new TaxiTicket(price, new EvenlySplitDecorator(price, person, paidFor), person, paidFor);
             default:
-                return new EvenlySplitDefaultTicket(price);
+                return new DefaultTicket(price, new EvenlySplitDecorator(price, person, paidFor), person, paidFor);
         }
     }
 }
