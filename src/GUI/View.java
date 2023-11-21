@@ -25,13 +25,18 @@ public class View {
 
         ticketButton.addActionListener(controller);
     }
-    public void createSubFrame(){
+    public void createTicketFrame(){
         JFrame nameFrame = new JFrame("New Ticket");
         JPanel namePanel = new JPanel();
-        String[] tickets = {"Airplane Ticket", "Restaurant Ticket", "Taxi Ticket"};
+        JButton ok = new JButton("Ok");
+        JButton cancel = new JButton("Cancel");
+
+        JCheckBox evenlySplit = new JCheckBox("Ticket evenly split?");
+        evenlySplit.setBounds(100, 150, evenlySplit.getPreferredSize().width+5, evenlySplit.getPreferredSize().height);
+        namePanel.add(evenlySplit);
+        String[] tickets = {"Airplane Ticket", "Restaurant Ticket", "Taxi Ticket", "Concert Ticket"};
         JComboBox<String> menu = new JComboBox<>(tickets);
-        Dimension size = menu.getPreferredSize();
-        menu.setBounds( 100, 100, size.width, size.height);
+        menu.setBounds( 100, 100, menu.getPreferredSize().width, menu.getPreferredSize().height);
         namePanel.setLayout(null);
         namePanel.add(menu);
         nameFrame.add(namePanel);

@@ -20,7 +20,10 @@ public class Controller implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(Objects.equals(e.getActionCommand(), "New Ticket")){
-            view.createSubFrame();
+            view.createTicketFrame();
+        }
+        if(Objects.equals(e.getActionCommand(), "Airplane Ticket")){
+
         }
     }
 }
