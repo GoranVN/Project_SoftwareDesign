@@ -18,7 +18,7 @@ public class TicketDatabase {
         ticketList.add(ticketFactory.createEvenlySplitTicket(type, price, person, paidFor));
     }
 
-    public void newEvenlySplitTicket(String type, boolean evenlySplit, float price, Person person, Map<Person,Float> detailedPaidFor){
+    public void newNotEvenlySplitTicket(String type, boolean evenlySplit, float price, Person person, Map<Person,Float> detailedPaidFor){
         ticketList.add(ticketFactory.createNotEvenlySplitTicket(type, price, person, detailedPaidFor));
     }
 }

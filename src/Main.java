@@ -1,5 +1,10 @@
+import Databases.TicketDatabase;
+import Person.Person;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        TicketDatabase ticketDatabase = new TicketDatabase();
+        Person person1 = new Person("Rien", 0);
+        ticketDatabase.
     }
 }

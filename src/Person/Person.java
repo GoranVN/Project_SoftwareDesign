@@ -2,13 +2,13 @@ package Person;
 
 public class Person {
     private String name;
-    private int balance;
+    private float balance;
 
-    public Person(String name, int balance) {
+    public Person(String name, float balance) {
         this.name = name;
         this.balance = balance;
     }
-    public void updateBalance(int balanceDifference) {
+    public void updateBalance(float balanceDifference) {
         this.balance += balanceDifference;
     }
 
