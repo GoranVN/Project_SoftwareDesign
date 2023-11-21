@@ -9,7 +9,5 @@ public class TicketDatabase {
     public TicketDatabase() {
         ticketList = new ArrayList<>();
     }
-    public newTicket(){
-
-    }
+    public newTicket(){}
 }
