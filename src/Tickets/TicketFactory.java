@@ -23,7 +23,11 @@ public class TicketFactory {
         }
     }
 
-    public Ticket createNotEvenlySplitTicket(String type, double price, Person person, Map<Person,Double> detailedPaidFor) {
+    public Ticket createNotEvenlySplitTicket(String type, Person person, Map<Person,Double> detailedPaidFor) {
+        double price = 0;
+        for (double i : detailedPaidFor.values()) {
+            price+=i;
+        }
         switch (type) {
             case "airplane":
                 return new AirplaneTicket(price, new NotEvenlySplitDecorator(person, detailedPaidFor), person);
