@@ -2,20 +2,14 @@ package Person;
 
 public class Person {
     private String name;
+    private float balance;
 
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
-    private int balance;
-
-    public Person(String name, int balance) {
+    public Person(String name, float balance) {
         this.name = name;
         this.balance = balance;
+    }
+    public void updateBalance(float balanceDifference) {
+        this.balance += balanceDifference;
     }
 
     public String getName() {
