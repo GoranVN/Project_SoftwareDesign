@@ -8,7 +8,7 @@ import java.util.Map;
 public class TicketFactory {
     public TicketFactory(){}
 
-    public Ticket createEvenlySplitTicket(String type, float price, Person person, ArrayList<Person> paidFor) {
+    public Ticket createEvenlySplitTicket(String type, double price, Person person, ArrayList<Person> paidFor) {
         switch (type) {
             case "airplane":
                 return new AirplaneTicket(price, new EvenlySplitDecorator(person, price, paidFor), person);
@@ -23,7 +23,7 @@ public class TicketFactory {
         }
     }
 
-    public Ticket createNotEvenlySplitTicket(String type, float price, Person person, Map<Person,Float> detailedPaidFor) {
+    public Ticket createNotEvenlySplitTicket(String type, double price, Person person, Map<Person,Double> detailedPaidFor) {
         switch (type) {
             case "airplane":
                 return new AirplaneTicket(price, new NotEvenlySplitDecorator(person, detailedPaidFor), person);

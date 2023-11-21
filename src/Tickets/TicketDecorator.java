@@ -6,5 +6,5 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public interface TicketDecorator {
-    public Map<Person,Float> getBalanceDifferencePerPerson();
+    public Map<Person,Double> getBalanceDifferencePerPerson();
 }

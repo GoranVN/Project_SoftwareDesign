@@ -14,11 +14,11 @@ public class TicketDatabase {
         ticketList = new ArrayList<>();
         ticketFactory = new TicketFactory();
     }
-    public void newEvenlySplitTicket(String type, float price, Person person, ArrayList<Person> paidFor) {
+    public void newEvenlySplitTicket(String type, double price, Person person, ArrayList<Person> paidFor) {
         ticketList.add(ticketFactory.createEvenlySplitTicket(type, price, person, paidFor));
     }
 
-    public void newNotEvenlySplitTicket(String type, boolean evenlySplit, float price, Person person, Map<Person,Float> detailedPaidFor){
+    public void newNotEvenlySplitTicket(String type, boolean evenlySplit, double price, Person person, Map<Person,Double> detailedPaidFor){
         ticketList.add(ticketFactory.createNotEvenlySplitTicket(type, price, person, detailedPaidFor));
     }
 }

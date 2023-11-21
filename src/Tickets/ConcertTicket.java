@@ -5,7 +5,7 @@ import Person.Person;
 import java.util.ArrayList;
 
 public class ConcertTicket extends Ticket{
-    public ConcertTicket(float price, TicketDecorator ticketDecorator, Person person) {
+    public ConcertTicket(double price, TicketDecorator ticketDecorator, Person person) {
         super(price, ticketDecorator, person);
     }
 }

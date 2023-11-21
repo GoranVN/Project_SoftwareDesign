@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public abstract class Ticket {
-    private float price;
+    private double price;
     private TicketDecorator ticketDecorator;
     private Person person;
-    public Ticket(float price, TicketDecorator ticketDecorator, Person person) {
+    public Ticket(double price, TicketDecorator ticketDecorator, Person person) {
         this.price = price;
         this.ticketDecorator = ticketDecorator;
         this.person = person;
     }
 
-    public Map<Person, Float> getBalanceDifferencePerPerson() {
+    public Map<Person, Double> getBalanceDifferencePerPerson() {
         return ticketDecorator.getBalanceDifferencePerPerson();
     }
 }
