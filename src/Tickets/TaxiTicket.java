@@ -1,7 +1,11 @@
 package Tickets;
 
-public abstract class TaxiTicket extends Ticket{
-    public TaxiTicket(float price) {
-        super(price);
+import Person.Person;
+
+import java.util.ArrayList;
+
+public class TaxiTicket extends Ticket{
+    public TaxiTicket(float price, TicketDecorator ticketDecorator, Person person, ArrayList<Person> paidFor) {
+        super(price, ticketDecorator, person, paidFor);
     }
 }
