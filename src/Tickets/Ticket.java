@@ -2,7 +2,6 @@ package Tickets;
 
 import Person.*;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 public abstract class Ticket {

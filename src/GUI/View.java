@@ -2,7 +2,6 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class View {
     private Controller controller;
