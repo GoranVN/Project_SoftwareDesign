@@ -7,12 +7,20 @@ import Tickets.TicketFactory;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class TicketDatabase {
+public class TicketDatabase extends AbstractDatabase{
     private ArrayList<Ticket> ticketList;
     private TicketFactory ticketFactory;
-    public TicketDatabase() {
+    private static TicketDatabase firstInstance = null;
+    private TicketDatabase() {
         ticketList = new ArrayList<>();
         ticketFactory = new TicketFactory();
+    }
+
+    public static TicketDatabase getInstance() {
+        if (firstInstance == null) {
+            firstInstance = new TicketDatabase();
+        }
+        return firstInstance;
     }
     public void newEvenlySplitTicket(String type, double price, Person person, ArrayList<Person> paidFor) {
         ticketList.add(ticketFactory.createEvenlySplitTicket(type, price, person, paidFor));

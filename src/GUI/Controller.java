@@ -12,8 +12,8 @@ public class Controller implements ActionListener {
     private PersonDatabase personDB;
     private View view;
     public Controller(){
-        ticketDB = new TicketDatabase();
-        personDB = new PersonDatabase();
+        ticketDB = TicketDatabase.getInstance();
+        personDB = PersonDatabase.getInstance();
         view = new View(this);
     }
 
