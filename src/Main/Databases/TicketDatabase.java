@@ -1,8 +1,8 @@
-package Databases;
+package Main.Databases;
 
-import Person.Person;
-import Tickets.Ticket;
-import Tickets.TicketFactory;
+import Main.Person.Person;
+import Main.Tickets.Ticket;
+import Main.Tickets.TicketFactory;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -28,5 +28,9 @@ public class TicketDatabase extends AbstractDatabase{
 
     public void newNotEvenlySplitTicket(String type, Person person, Map<Person,Double> detailedPaidFor){
         ticketList.add(ticketFactory.createNotEvenlySplitTicket(type, person, detailedPaidFor));
+    }
+
+    public ArrayList<Ticket> getEntries(){
+        return ticketList;
     }
 }

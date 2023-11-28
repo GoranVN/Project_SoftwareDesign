@@ -1,6 +1,7 @@
-package Tickets;
+package Main.Tickets;
 
-import Person.Person;
+import Main.Person.Person;
+import Main.Tickets.Decorators.TicketDecorator;
 
 
 public class DefaultTicket extends Ticket{

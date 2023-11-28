@@ -1,7 +1,7 @@
-package GUI;
+package Main.GUI;
 
-import Databases.PersonDatabase;
-import Databases.TicketDatabase;
+import Main.Databases.PersonDatabase;
+import Main.Databases.TicketDatabase;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
