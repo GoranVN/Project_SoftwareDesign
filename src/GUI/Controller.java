@@ -19,11 +19,17 @@ public class Controller implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(Objects.equals(e.getActionCommand(), "New Ticket")){
-            view.createTicketFrame();
-        }
-        if(Objects.equals(e.getActionCommand(), "Airplane Ticket")){
+        switch (e.getActionCommand()){
+            case "New Ticket" :
+                view.createTicketFrame();
+                if(Objects.equals(e.getActionCommand(), "Ok")){
 
+                }
+                break;
+            case "Add Person":
+                view.createAddPersonFrame();
+                break;
         }
+
     }
 }
