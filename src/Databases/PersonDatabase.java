@@ -28,8 +28,8 @@ public class PersonDatabase extends AbstractDatabase{
         return PersonList;
     }
 
-    public void updateBalance(Map<Person,Double> balanceDifferncePerPerson) {
-        for (Map.Entry<Person, Double> entry : balanceDifferncePerPerson.entrySet()) {
+    public void updateBalance(Map<Person,Double> balanceDifferencePerPerson) {
+        for (Map.Entry<Person, Double> entry : balanceDifferencePerPerson.entrySet()) {
             Person person = entry.getKey();
             person.updateBalance(entry.getValue());
         }

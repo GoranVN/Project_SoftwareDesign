@@ -1,6 +1,7 @@
 package Tickets;
 
 import Person.Person;
+import Tickets.Decorators.TicketDecorator;
 
 
 public class TaxiTicket extends Ticket{

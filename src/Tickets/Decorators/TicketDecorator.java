@@ -1,4 +1,4 @@
-package Tickets;
+package Tickets.Decorators;
 
 import Person.Person;
 

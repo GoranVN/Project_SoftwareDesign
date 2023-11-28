@@ -1,6 +1,7 @@
 package Tickets;
 
 import Person.*;
+import Tickets.Decorators.TicketDecorator;
 
 import java.util.Map;
 

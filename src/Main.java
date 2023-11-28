@@ -28,13 +28,13 @@ public class Main {
         pricePerPerson.put(person2, 1.5);
         pricePerPerson.put(person3, 1.62);
 
-        //ticketDB.newEvenlySplitTicket("Restaurant", 5.12, person1, personDB.getEntries());
+        ticketDB.newEvenlySplitTicket("Restaurant", 5.12, person1, personDB.getEntries());
         ticketDB.newNotEvenlySplitTicket("Restaurant", person1, pricePerPerson);
         for (Ticket ticket : ticketDB.getEntries()) {
             personDB.updateBalance(ticket.getBalanceDifferencePerPerson());
         }
         System.out.print("Person database: ");
         for (Person person : personDB.getEntries())
-            System.out.print(person.toString());
+            System.out.print(person.toString() + ' ');
     }
 }

@@ -1,11 +1,12 @@
-package Tickets;
+package Tickets.Decorators;
 
 import Person.Person;
+import Tickets.Decorators.TicketDecorator;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class NotEvenlySplitDecorator implements TicketDecorator{
+public class NotEvenlySplitDecorator implements TicketDecorator {
     private Map<Person,Double> detailedPaidFor;
     private Person person;
     public NotEvenlySplitDecorator(Person person, Map<Person,Double> detailedPaidFor) {
