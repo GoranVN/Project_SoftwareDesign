@@ -2,13 +2,13 @@ package Person;
 
 public class Person {
     private String name;
-    private float balance;
+    private double balance;
 
-    public Person(String name, float balance) {
+    public Person(String name, double balance) {
         this.name = name;
         this.balance = balance;
     }
-    public void updateBalance(float balanceDifference) {
+    public void updateBalance(double balanceDifference) {
         this.balance += balanceDifference;
     }
 
@@ -18,5 +18,9 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String toString() {
+        return "(Name: " + name + ", Balance: " + balance + ")";
     }
 }

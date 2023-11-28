@@ -29,4 +29,8 @@ public class TicketDatabase extends AbstractDatabase{
     public void newNotEvenlySplitTicket(String type, Person person, Map<Person,Double> detailedPaidFor){
         ticketList.add(ticketFactory.createNotEvenlySplitTicket(type, person, detailedPaidFor));
     }
+
+    public ArrayList<Ticket> getEntries(){
+        return ticketList;
+    }
 }

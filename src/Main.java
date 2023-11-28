@@ -1,3 +1,4 @@
+import Databases.PersonDatabase;
 import GUI.Controller;
 import GUI.View;
 
@@ -13,24 +14,27 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         Controller controller = new Controller();
-        TicketFactory ticketFactory = new TicketFactory();
         Person person1 = new Person("Piet", 0);
         Person person2 = new Person("Jan", 0);
         Person person3 = new Person("Gert", 0);
-        ArrayList<Person> personList = new ArrayList<Person>();
-        //personList.add(person1);
-        personList.add(person2);
-        personList.add(person3);
+        TicketDatabase ticketDB = TicketDatabase.getInstance();
+        PersonDatabase personDB = PersonDatabase.getInstance();
+        personDB.addEntry(person1);
+        personDB.addEntry(person2);
+        personDB.addEntry(person3);
+
         Map<Person, Double> pricePerPerson = new HashMap<Person, Double>();
         pricePerPerson.put(person1, 2.0);
         pricePerPerson.put(person2, 1.5);
         pricePerPerson.put(person3, 1.62);
-        Ticket ticket1 = ticketFactory.createEvenlySplitTicket("Restaurant", 5.12, person1, personList);
-        System.out.print("Ticket1: ");
-        System.out.println(ticket1.getBalanceDifferencePerPerson());
-        Ticket ticket2 = ticketFactory.createNotEvenlySplitTicket("Restaurant", person1, pricePerPerson);
-        System.out.print("Ticket2: ");
-        System.out.println(ticket2.getBalanceDifferencePerPerson());
 
+        //ticketDB.newEvenlySplitTicket("Restaurant", 5.12, person1, personDB.getEntries());
+        ticketDB.newNotEvenlySplitTicket("Restaurant", person1, pricePerPerson);
+        for (Ticket ticket : ticketDB.getEntries()) {
+            personDB.updateBalance(ticket.getBalanceDifferencePerPerson());
+        }
+        System.out.print("Person database: ");
+        for (Person person : personDB.getEntries())
+            System.out.print(person.toString());
     }
 }
