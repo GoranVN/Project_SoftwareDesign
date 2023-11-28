@@ -1,4 +1,6 @@
-package Person;
+package Main.Person;
+
+import static java.lang.Math.round;
 
 public class Person {
     private String name;
@@ -21,6 +23,6 @@ public class Person {
     }
 
     public String toString() {
-        return "(Name: " + name + ", Balance: " + balance + ")";
+        return "(Name: " + name + ", Balance: " + Math.round(balance*100.0)/100.0 + ")";
     }
 }

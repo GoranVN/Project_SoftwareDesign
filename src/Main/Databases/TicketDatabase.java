@@ -1,8 +1,8 @@
-package Databases;
+package Main.Databases;
 
-import Person.Person;
-import Tickets.Ticket;
-import Tickets.TicketFactory;
+import Main.Person.Person;
+import Main.Tickets.Ticket;
+import Main.Tickets.TicketFactory;
 
 import java.util.ArrayList;
 import java.util.Map;

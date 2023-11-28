@@ -1,10 +1,10 @@
-package Tickets.Decorators;
+package Main.Tickets.Decorators;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import Person.*;
+import Main.Person.*;
 
 public class EvenlySplitDecorator implements TicketDecorator{
     private double price;

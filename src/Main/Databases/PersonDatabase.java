@@ -1,6 +1,6 @@
-package Databases;
+package Main.Databases;
 
-import Person.Person;
+import Main.Person.Person;
 
 import java.util.ArrayList;
 import java.util.Map;
