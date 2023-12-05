@@ -1,6 +1,6 @@
-package Main.Tickets.Decorators;
+package Tickets.Decorators;
 
-import Main.Person.Person;
+import Person.Person;
 import java.util.Map;
 
 public interface TicketDecorator {

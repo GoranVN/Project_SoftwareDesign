@@ -1,11 +1,8 @@
-package Main;
+import Databases.PersonDatabase;
+import Databases.TicketDatabase;
 
-import Main.Databases.PersonDatabase;
-import Main.GUI.Controller;
-
-import Main.Databases.TicketDatabase;
-import Main.Person.Person;
-import Main.Tickets.Ticket;
+import GUI.Controller;
+import Person.Person;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,12 +10,14 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         Controller controller = new Controller();
+
+
         Person person1 = new Person("Piet", 0);
         Person person2 = new Person("Jan", 0);
         Person person3 = new Person("Gert", 0);
         Person person4 = new Person("Bert", 0);
-        TicketDatabase ticketDB = TicketDatabase.getInstance();
         PersonDatabase personDB = PersonDatabase.getInstance();
+        TicketDatabase ticketDB = TicketDatabase.getInstance(personDB);
         personDB.addEntry(person1);
         personDB.addEntry(person2);
         personDB.addEntry(person3);
@@ -32,9 +31,6 @@ public class Main {
 
         ticketDB.newEvenlySplitTicket("Restaurant", 10.0, person3, personDB.getEntries());
         ticketDB.newNotEvenlySplitTicket("Restaurant", person2, pricePerPerson);
-        for (Ticket ticket : ticketDB.getEntries()) {
-            personDB.updateBalance(ticket.getBalanceDifferencePerPerson());
-        }
         System.out.print("Main.Person database: ");
         for (Person person : personDB.getEntries())
             System.out.print(person.toString() + ' ');

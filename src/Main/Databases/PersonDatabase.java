@@ -1,11 +1,11 @@
-package Main.Databases;
+package Databases;
 
-import Main.Person.Person;
+import Person.Person;
 
 import java.util.ArrayList;
 import java.util.Map;
 
-public class PersonDatabase extends AbstractDatabase{
+public class PersonDatabase extends AbstractDatabase implements Observer{
     private final ArrayList<Person> PersonList;
     private static PersonDatabase firstInstance = null;
     private PersonDatabase() {

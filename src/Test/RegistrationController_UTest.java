@@ -1,6 +1,3 @@
-package Test;
-/*
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,7 +36,7 @@ public class RegistrationController_UTest
         RegisterEntry mock_registerEntry = Mockito.mock(RegisterEntry.class);
         Mockito.when(mock_registerEntry.isCheckedIn()).thenReturn(true);
         PowerMockito.whenNew(RegisterEntry.class).withArguments(true).thenReturn(mock_registerEntry);
-*/
+
         /*
             1. "new RegisterEntry" will return a mock object, carried out by 3 lines above
             2. The mocked database will be called, with method "addEntry"

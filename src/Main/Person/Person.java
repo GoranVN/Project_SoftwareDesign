@@ -1,4 +1,4 @@
-package Main.Person;
+package Person;
 
 import static java.lang.Math.round;
 

@@ -1,7 +1,7 @@
-package Main.Tickets;
+package Tickets;
 
-import Main.Person.*;
-import Main.Tickets.Decorators.TicketDecorator;
+import Person.*;
+import Tickets.Decorators.TicketDecorator;
 
 import java.util.Map;
 

@@ -1,7 +1,7 @@
-package Main.GUI;
+package GUI;
 
-import Main.Databases.PersonDatabase;
-import Main.Databases.TicketDatabase;
+import Databases.PersonDatabase;
+import Databases.TicketDatabase;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,8 +12,8 @@ public class Controller implements ActionListener {
     private PersonDatabase personDB;
     private View view;
     public Controller(){
-        ticketDB = TicketDatabase.getInstance();
         personDB = PersonDatabase.getInstance();
+        ticketDB = TicketDatabase.getInstance(personDB);
         view = new View(this);
     }
 
@@ -30,6 +30,5 @@ public class Controller implements ActionListener {
                 view.createAddPersonFrame();
                 break;
         }
-
     }
 }
