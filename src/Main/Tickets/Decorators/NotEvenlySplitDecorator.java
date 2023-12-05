@@ -1,6 +1,6 @@
-package Main.Tickets.Decorators;
+package Tickets.Decorators;
 
-import Main.Person.Person;
+import Person.Person;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,13 +8,14 @@ import java.util.Map;
 public class NotEvenlySplitDecorator implements TicketDecorator {
     private Map<Person,Double> detailedPaidFor;
     private Person person;
+    private  Map<Person,Double> BalanceDifference;
     public NotEvenlySplitDecorator(Person person, Map<Person,Double> detailedPaidFor) {
         this.detailedPaidFor = detailedPaidFor;
         this.person = person;
+        this.BalanceDifference = getBalanceDifferencePerPerson();
     }
 
-    @Override
-    public Map<Person,Double> getBalanceDifferencePerPerson() {
+    private Map<Person,Double> getBalanceDifferencePerPerson() {
         Map<Person,Double> differencePerPerson = new HashMap<Person, Double>();
         double totalPrice = 0;
         for (Map.Entry<Person, Double> entry : detailedPaidFor.entrySet()) {
@@ -25,5 +26,10 @@ public class NotEvenlySplitDecorator implements TicketDecorator {
         }
         differencePerPerson.put(person, totalPrice);
         return differencePerPerson;
+    }
+
+    @Override
+    public Map<Person, Double> getBalanceDifference() {
+        return BalanceDifference;
     }
 }

@@ -1,7 +1,7 @@
-package Main.Tickets;
+package Tickets;
 
-import Main.Person.*;
-import Main.Tickets.Decorators.TicketDecorator;
+import Person.*;
+import Tickets.Decorators.TicketDecorator;
 
 import java.util.Map;
 
@@ -16,6 +16,6 @@ public abstract class Ticket {
     }
 
     public Map<Person, Double> getBalanceDifferencePerPerson() {
-        return ticketDecorator.getBalanceDifferencePerPerson();
+        return ticketDecorator.getBalanceDifference();
     }
 }

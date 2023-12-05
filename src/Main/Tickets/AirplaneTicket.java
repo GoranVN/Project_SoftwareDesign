@@ -1,7 +1,7 @@
-package Main.Tickets;
+package Tickets;
 
-import Main.Person.Person;
-import Main.Tickets.Decorators.TicketDecorator;
+import Person.Person;
+import Tickets.Decorators.TicketDecorator;
 
 public class AirplaneTicket extends Ticket{
     public AirplaneTicket(double price, TicketDecorator ticketDecorator, Person person) {
