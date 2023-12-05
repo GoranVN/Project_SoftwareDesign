@@ -8,8 +8,10 @@ import Tickets.TicketFactory;
 import javax.annotation.processing.SupportedSourceVersion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
-public class Controller implements ActionListener {
+public class Controller extends WindowController implements ActionListener{
     private TicketDatabase ticketDB;
     private PersonDatabase personDB;
     private View view;
@@ -66,6 +68,20 @@ public class Controller implements ActionListener {
                     }
 
                 }
+        }
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        if(ticketSubframe != null) {
+            view.setEnabled(true);
+            ticketSubframe.dispose();
+            ticketSubframe = null;
+        }
+        else if(personSubframe != null) {
+            view.setEnabled(true);
+            personSubframe.dispose();
+            personSubframe = null;
         }
     }
 }

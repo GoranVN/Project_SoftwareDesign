@@ -34,6 +34,7 @@ public class PersonSubframe extends JFrame {
 
         ok.addActionListener(controller);
         cancel.addActionListener(controller);
+        this.addWindowListener(controller);
     }
     public String getTextAreaValue(){
         return personName.getText();
