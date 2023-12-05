@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class PersonDatabase extends AbstractDatabase{
-    private final ArrayList<Person> PersonList;
+    private final ArrayList<Person> personList;
     private static PersonDatabase firstInstance = null;
     private PersonDatabase() {
-        this.PersonList = new ArrayList<>();
+        this.personList = new ArrayList<>();
     }
 
     public static PersonDatabase getInstance() {
@@ -19,13 +19,14 @@ public class PersonDatabase extends AbstractDatabase{
         return firstInstance;
     }
     public void addEntry(Person p){
-        this.PersonList.add(p);
+        this.personList.add(p);
+        System.out.println(personList);
     }
     public void deleteEntry(Person p){
-        PersonList.remove(p);
+        personList.remove(p);
     }
     public ArrayList<Person> getEntries(){
-        return PersonList;
+        return personList;
     }
 
     public void updateBalance(Map<Person,Double> balanceDifferencePerPerson) {
