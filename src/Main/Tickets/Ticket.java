@@ -16,6 +16,6 @@ public abstract class Ticket {
     }
 
     public Map<Person, Double> getBalanceDifferencePerPerson() {
-        return ticketDecorator.getBalanceDifferencePerPerson();
+        return ticketDecorator.getBalanceDifference();
     }
 }

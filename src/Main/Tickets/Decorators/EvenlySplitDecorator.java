@@ -10,15 +10,16 @@ public class EvenlySplitDecorator implements TicketDecorator{
     private double price;
     private Person person;
     private ArrayList<Person> paidFor;
+    private  Map<Person,Double> BalanceDifference;
 
     public EvenlySplitDecorator(Person person, double price, ArrayList<Person> paidFor) {
         this.price = price;
         this.person = person;
         this.paidFor = paidFor;
+        this.BalanceDifference = getBalanceDifferencePerPerson();
     }
 
-    @Override
-    public Map<Person,Double> getBalanceDifferencePerPerson() {
+    private Map<Person,Double> getBalanceDifferencePerPerson() {
         Map<Person,Double> differencePerPerson = new HashMap<Person, Double>();
         double pricePerPerson = price/paidFor.size();
         for (Person pers : paidFor) {
@@ -32,5 +33,10 @@ public class EvenlySplitDecorator implements TicketDecorator{
             differencePerPerson.put(person, price);
         }
         return differencePerPerson;
+    }
+
+    @Override
+    public Map<Person, Double> getBalanceDifference() {
+        return BalanceDifference;
     }
 }

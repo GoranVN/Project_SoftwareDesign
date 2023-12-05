@@ -22,7 +22,7 @@ public class Main {
         personDB.addEntry(person1);
         personDB.addEntry(person2);
         personDB.addEntry(person3);
-        //personDB.addEntry(person4);
+        personDB.addEntry(person4);
 
         Map<Person, Double> pricePerPerson = new HashMap<Person, Double>();
         pricePerPerson.put(person1, 2.0);
@@ -30,7 +30,7 @@ public class Main {
         pricePerPerson.put(person3, 1.62);
         //pricePerPerson.put(person4, 3.0);
 
-        ticketDB.newEvenlySplitTicket("Restaurant", 5.12, person1, personDB.getEntries());
+        ticketDB.newEvenlySplitTicket("Restaurant", 10.0, person3, personDB.getEntries());
         ticketDB.newNotEvenlySplitTicket("Restaurant", person2, pricePerPerson);
         for (Ticket ticket : ticketDB.getEntries()) {
             personDB.updateBalance(ticket.getBalanceDifferencePerPerson());
