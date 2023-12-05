@@ -1,9 +1,9 @@
-package Main.GUI;
+package GUI;
 
-import Main.Databases.PersonDatabase;
-import Main.Databases.TicketDatabase;
-import Main.Person.Person;
-import Main.Tickets.TicketFactory;
+import Databases.PersonDatabase;
+import Databases.TicketDatabase;
+import Person.Person;
+import Tickets.TicketFactory;
 
 import javax.annotation.processing.SupportedSourceVersion;
 import java.awt.event.ActionEvent;
@@ -17,8 +17,8 @@ public class Controller implements ActionListener {
     private PersonSubframe personSubframe;
     private TicketFactory factory;
     public Controller(){
-        ticketDB = TicketDatabase.getInstance();
         personDB = PersonDatabase.getInstance();
+        ticketDB = TicketDatabase.getInstance(personDB);
         view = new View(this);
         factory = new TicketFactory();
 
