@@ -20,7 +20,6 @@ public class PersonDatabase extends AbstractDatabase implements Observer{
     }
     public void addEntry(Person p){
         this.personList.add(p);
-        System.out.println(personList);
     }
     public void deleteEntry(Person p){
         personList.remove(p);
