@@ -38,6 +38,7 @@ public class TicketSubframe extends JFrame{
         evenlySplit.addActionListener(controller);
         ok.addActionListener(controller);
         cancel.addActionListener(controller);
+        this.addWindowListener(controller);
     }
 
     public Boolean getEvenlySplit(){
