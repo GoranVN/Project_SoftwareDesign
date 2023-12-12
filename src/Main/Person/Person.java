@@ -14,6 +14,10 @@ public class Person {
         this.balance += balanceDifference;
     }
 
+    public double getBalance() {
+        return balance;
+    }
+
     public String getName() {
         return name;
     }
