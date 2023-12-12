@@ -3,6 +3,8 @@ package GUI;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Vector;
 
 public class View extends JFrame{
     private Controller controller;
@@ -43,7 +45,7 @@ public class View extends JFrame{
         model.addRow(name);
     }
 
-    public void addTicketToTable(String ticketName){
-        model.addColumn(ticketName);
+    public void addTicketToTable(String ticketName, Vector<Double> balances){
+        model.addColumn(ticketName, balances);
     }
 }

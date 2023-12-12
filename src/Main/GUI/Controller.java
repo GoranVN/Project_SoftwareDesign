@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Vector;
 
 public class Controller extends WindowController implements ActionListener{
@@ -65,9 +66,19 @@ public class Controller extends WindowController implements ActionListener{
                     String typeOfTicket = ticketSubframe.getTypeOfTicket();
                     String personWhoPaid = ticketSubframe.getPersonWhoPaid();
                     if(evenlySplit){
-                        factory.createEvenlySplitTicket(typeOfTicket, 50, personDB.getPerson(personWhoPaid), personDB.getEntries());
+                        ticketDB.newEvenlySplitTicket(typeOfTicket, 50, personDB.getPerson(personWhoPaid), personDB.getEntries());
+                        Vector<Double> balances = new Vector<>();
+                        for(int i =0; i<getPersonDB().size(); i++){
+                            if(!Objects.equals(getPersonDB().get(i), personWhoPaid)){
+                                balances.add(i, personDB.getPerson(getPersonDB().get(i)).getBalance());
+                            }
+                            else{
+                                balances.add(i, 0.0);
+                            }
+                        }
                         view.setEnabled(true);
-                        view.addTicketToTable(typeOfTicket);
+                        view.addTicketToTable(typeOfTicket, balances);
+
                         ticketSubframe.dispose();
                         ticketSubframe = null;
                     }
