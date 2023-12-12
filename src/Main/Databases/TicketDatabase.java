@@ -5,6 +5,7 @@ import Tickets.Ticket;
 import Tickets.TicketFactory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class TicketDatabase extends AbstractDatabase implements Observable{
@@ -34,6 +35,19 @@ public class TicketDatabase extends AbstractDatabase implements Observable{
         Ticket newTicket = ticketFactory.createNotEvenlySplitTicket(type, person, detailedPaidFor);
         ticketList.add(newTicket);
         notifyObservers(newTicket.getBalanceDifferencePerPerson());
+    }
+
+    public void removeTicket(Ticket ticket) {
+        ticketList.remove(ticket);
+        Map<Person, Double> balanceDifference = new HashMap<>();
+        for (Map.Entry<Person, Double> entry : ticket.getBalanceDifferencePerPerson().entrySet()) {
+            balanceDifference.put(entry.getKey(), - entry.getValue());
+        }
+        notifyObservers(balanceDifference);
+    }
+
+    public void deleteAll() {
+        ticketList.clear();
     }
 
     public ArrayList<Ticket> getEntries(){
