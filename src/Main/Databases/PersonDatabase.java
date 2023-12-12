@@ -4,6 +4,7 @@ import Person.Person;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
 public class PersonDatabase extends AbstractDatabase implements Observer{
     private final ArrayList<Person> personList;
@@ -20,7 +21,15 @@ public class PersonDatabase extends AbstractDatabase implements Observer{
     }
     public void addEntry(Person p){
         this.personList.add(p);
-        System.out.println(personList);
+    }
+
+    public Person getPerson(String name){
+        for(Person person : personList){
+            if(Objects.equals(person.getName(), name)){
+                return person;
+            }
+        }
+        return null;
     }
     public void deleteEntry(Person p){
         personList.remove(p);

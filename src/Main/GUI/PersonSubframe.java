@@ -8,6 +8,7 @@ public class PersonSubframe extends JFrame {
     private Controller controller;
     private JTextArea personName;
     public PersonSubframe(Controller controller) {
+        super("New Person");
         this.controller = controller;
 
         JPanel personPanel = new JPanel();

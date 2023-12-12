@@ -7,7 +7,9 @@ public class TicketSubframe extends JFrame{
     private Controller controller;
     private JCheckBox evenlySplit;
     private JComboBox<String> menu;
+    private JComboBox<String> namesMenu;
     public TicketSubframe(Controller controller) {
+        super("New Ticket");
         this.controller = controller;
 
         JPanel ticketPanel = new JPanel();
@@ -18,12 +20,26 @@ public class TicketSubframe extends JFrame{
 
         evenlySplit = new JCheckBox("Ticket evenly split?");
         evenlySplit.setBounds(125, 150, 200, 30);
+
+        JTextArea typeOfTicket = new JTextArea("Ticket: ");
+        typeOfTicket.setBounds(65, 30, 60, 30);
+        typeOfTicket.setBackground(null);
         String[] tickets = {"Airplane Ticket", "Restaurant Ticket", "Taxi Ticket", "Concert Ticket"};
         menu = new JComboBox<>(tickets);
-        menu.setBounds( 125, 100, 150, 30);
+        menu.setBounds( 125, 25, 150, 30);
+
+        JTextArea whoPaid = new JTextArea("Who paid?");
+        whoPaid.setBounds(60, 65, 60, 30);
+        whoPaid.setBackground(null);
+        namesMenu = new JComboBox<>(controller.getPersonDB());
+        namesMenu.setBounds( 125, 60, 150, 30);
+
         ok.setBounds(75, 200, 100, 30);
         cancel.setBounds(200, 200, 100, 30);
+        ticketPanel.add(typeOfTicket);
         ticketPanel.add(menu);
+        ticketPanel.add(whoPaid);
+        ticketPanel.add(namesMenu);
         ticketPanel.add(evenlySplit);
         ticketPanel.add(ok);
         ticketPanel.add(cancel);
@@ -46,5 +62,8 @@ public class TicketSubframe extends JFrame{
     }
     public String getTypeOfTicket(){
         return menu.getSelectedItem().toString();
+    }
+    public String getPersonWhoPaid(){
+        return namesMenu.getSelectedItem().toString();
     }
 }

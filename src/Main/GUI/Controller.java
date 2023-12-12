@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
+import java.util.Vector;
 
 public class Controller extends WindowController implements ActionListener{
     private TicketDatabase ticketDB;
@@ -54,14 +56,20 @@ public class Controller extends WindowController implements ActionListener{
                     String name = personSubframe.getTextAreaValue();
                     personDB.addEntry(new Person(name, 0.0));
                     view.setEnabled(true);
+                    view.addPersonToTable(new String[]{name});
                     personSubframe.dispose();
                     personSubframe = null;
                 }
                 else if(ticketSubframe != null){
                     Boolean evenlySplit = ticketSubframe.getEvenlySplit();
                     String typeOfTicket = ticketSubframe.getTypeOfTicket();
+                    String personWhoPaid = ticketSubframe.getPersonWhoPaid();
                     if(evenlySplit){
-
+                        factory.createEvenlySplitTicket(typeOfTicket, 50, personDB.getPerson(personWhoPaid), personDB.getEntries());
+                        view.setEnabled(true);
+                        view.addTicketToTable(typeOfTicket);
+                        ticketSubframe.dispose();
+                        ticketSubframe = null;
                     }
                     else{
 
@@ -83,5 +91,12 @@ public class Controller extends WindowController implements ActionListener{
             personSubframe.dispose();
             personSubframe = null;
         }
+    }
+
+    public Vector<String> getPersonDB(){
+        Vector<String> namesList = new Vector<>();
+        for (Person person : personDB.getEntries())
+            namesList.add(person.getName());
+        return namesList;
     }
 }
