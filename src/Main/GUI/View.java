@@ -21,7 +21,7 @@ public class View extends JFrame{
         panel.add(addPersonButton);
         addPersonButton.setBounds(275, 500, 100, 30);
 
-        String[] header = {"Persons"};
+        String[] header = {"Participants"};
         String[][] data = {};
         model = new DefaultTableModel(data, header);
         JTable table = new JTable(model);
@@ -45,7 +45,7 @@ public class View extends JFrame{
         model.addRow(name);
     }
 
-    public void addTicketToTable(String ticketName, Vector<Double> balances){
+    public void addTicketToTable(String ticketName, Vector<String> balances){
         model.addColumn(ticketName, balances);
     }
 }

@@ -10,9 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Vector;
+import java.util.*;
 
 public class Controller extends WindowController implements ActionListener{
     private TicketDatabase ticketDB;
@@ -31,8 +29,8 @@ public class Controller extends WindowController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()){
-            case "New Ticket" :
+        switch (e.getActionCommand()) {
+            case "New Ticket":
                 ticketSubframe = new TicketSubframe(this);
                 view.setEnabled(false);
                 break;
@@ -41,55 +39,65 @@ public class Controller extends WindowController implements ActionListener{
                 view.setEnabled(false);
                 break;
             case "Cancel":
-                if(ticketSubframe != null) {
+                if (ticketSubframe != null) {
                     view.setEnabled(true);
                     ticketSubframe.dispose();
                     ticketSubframe = null;
-                }
-                else if(personSubframe != null) {
+                } else if (personSubframe != null) {
                     view.setEnabled(true);
                     personSubframe.dispose();
                     personSubframe = null;
                 }
                 break;
             case "Ok":
-                if(personSubframe != null){
+                if (personSubframe != null) {
                     String name = personSubframe.getTextAreaValue();
                     personDB.addEntry(new Person(name, 0.0));
                     view.setEnabled(true);
                     view.addPersonToTable(new String[]{name});
                     personSubframe.dispose();
                     personSubframe = null;
-                }
-                else if(ticketSubframe != null){
+                } else if (ticketSubframe != null) {
                     Boolean evenlySplit = ticketSubframe.getEvenlySplit();
                     String typeOfTicket = ticketSubframe.getTypeOfTicket();
                     String personWhoPaid = ticketSubframe.getPersonWhoPaid();
-                    if(evenlySplit){
-                        ticketDB.newEvenlySplitTicket(typeOfTicket, 50, personDB.getPerson(personWhoPaid), personDB.getEntries());
-                        Vector<Double> balances = new Vector<>();
-                        for(int i =0; i<getPersonDB().size(); i++){
-                            if(!Objects.equals(getPersonDB().get(i), personWhoPaid)){
-                                balances.add(i, personDB.getPerson(getPersonDB().get(i)).getBalance());
+                    Vector<String> balances = new Vector<>();
+                    if (evenlySplit) {
+                        double totalPrice = ticketSubframe.getTotalprice();
+                        ticketDB.newEvenlySplitTicket(typeOfTicket, totalPrice, personDB.getPerson(personWhoPaid), personDB.getEntries());
+                        for(int i=0; i<getPersonDB().size(); i++){
+                            Vector<String> person = getPersonDB();
+                            if(!Objects.equals(person.get(i), personWhoPaid)){
+                                double value = totalPrice/getPersonDB().size();
+                                balances.add(i, Double.toString(value));
                             }
                             else{
-                                balances.add(i, 0.0);
+                                balances.add(i, "Paid");
                             }
                         }
-                        view.setEnabled(true);
-                        view.addTicketToTable(typeOfTicket, balances);
-
-                        ticketSubframe.dispose();
-                        ticketSubframe = null;
+                    } else {
+                        Map<String, Double> list = ticketSubframe.getDetailedList();
+                        Map<Person, Double> detailedList = new HashMap<>();
+                        for (Map.Entry<String, Double> entry : list.entrySet()) {
+                            Person person = personDB.getPerson(entry.getKey());
+                            double value = entry.getValue();
+                            detailedList.put(person, value);
+                            if(!Objects.equals(entry.getKey(), personWhoPaid)){
+                                balances.add(Double.toString(value));
+                            }
+                            else{
+                                balances.add("Paid");
+                            }
+                        }
+                        ticketDB.newNotEvenlySplitTicket(typeOfTicket, personDB.getPerson(personWhoPaid), detailedList);
                     }
-                    else{
-
-                    }
-
+                    view.setEnabled(true);
+                    view.addTicketToTable(typeOfTicket, balances);
+                    ticketSubframe.dispose();
+                    ticketSubframe = null;
                 }
         }
     }
-
     @Override
     public void windowClosing(WindowEvent e) {
         if(ticketSubframe != null) {
@@ -103,7 +111,6 @@ public class Controller extends WindowController implements ActionListener{
             personSubframe = null;
         }
     }
-
     public Vector<String> getPersonDB(){
         Vector<String> namesList = new Vector<>();
         for (Person person : personDB.getEntries())
