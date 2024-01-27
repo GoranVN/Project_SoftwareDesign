@@ -24,7 +24,6 @@ public class NotEvenlySplitDecorator implements TicketDecorator {
                 totalPrice += entry.getValue();
             }
         }
-        differencePerPerson.put(person, totalPrice);
         return differencePerPerson;
     }
 
