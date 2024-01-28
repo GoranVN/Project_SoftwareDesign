@@ -45,11 +45,11 @@ public class TicketDatabase extends AbstractDatabase implements Observable{
         }
         notifyObservers(balanceDifference);
     }
-
+    @Override
     public void deleteAll() {
         ticketList.clear();
     }
-
+    @Override
     public ArrayList<Ticket> getEntries(){
         return ticketList;
     }

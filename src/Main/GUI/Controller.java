@@ -21,12 +21,11 @@ public class Controller extends WindowController implements ActionListener{
     private View view;
     private TicketSubframe ticketSubframe;
     private PersonSubframe personSubframe;
-    private TicketFactory factory;
+
     public Controller(){
         personDB = PersonDatabase.getInstance();
         ticketDB = TicketDatabase.getInstance(personDB);
         view = new View(this);
-        factory = new TicketFactory();
 
     }
 

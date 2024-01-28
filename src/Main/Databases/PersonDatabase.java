@@ -35,9 +35,11 @@ public class PersonDatabase extends AbstractDatabase implements Observer{
         personList.remove(p);
     }
 
+    @Override
     public void deleteAll() {
         personList.clear();
     }
+    @Override
     public ArrayList<Person> getEntries(){
         return personList;
     }
