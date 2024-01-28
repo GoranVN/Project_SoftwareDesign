@@ -10,13 +10,13 @@ public class EvenlySplitDecorator implements TicketDecorator{
     private double price;
     private Person person;
     private ArrayList<Person> paidFor;
-    private  Map<Person,Double> BalanceDifference;
+    private Map<Person,Double> balanceDifference;
 
     public EvenlySplitDecorator(Person person, double price, ArrayList<Person> paidFor) {
         this.price = price;
         this.person = person;
         this.paidFor = paidFor;
-        this.BalanceDifference = getBalanceDifferencePerPerson();
+        this.balanceDifference = getBalanceDifferencePerPerson();
     }
 
     private Map<Person,Double> getBalanceDifferencePerPerson() {
@@ -37,6 +37,6 @@ public class EvenlySplitDecorator implements TicketDecorator{
 
     @Override
     public Map<Person, Double> getBalanceDifference() {
-        return BalanceDifference;
+        return balanceDifference;
     }
 }

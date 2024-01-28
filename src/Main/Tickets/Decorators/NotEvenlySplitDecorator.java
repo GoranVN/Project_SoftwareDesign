@@ -8,11 +8,11 @@ import java.util.Map;
 public class NotEvenlySplitDecorator implements TicketDecorator {
     private Map<Person,Double> detailedPaidFor;
     private Person person;
-    private  Map<Person,Double> BalanceDifference;
+    private  Map<Person,Double> balanceDifference;
     public NotEvenlySplitDecorator(Person person, Map<Person,Double> detailedPaidFor) {
         this.detailedPaidFor = detailedPaidFor;
         this.person = person;
-        this.BalanceDifference = getBalanceDifferencePerPerson();
+        this.balanceDifference = getBalanceDifferencePerPerson();
     }
 
     private Map<Person,Double> getBalanceDifferencePerPerson() {
@@ -30,6 +30,6 @@ public class NotEvenlySplitDecorator implements TicketDecorator {
 
     @Override
     public Map<Person, Double> getBalanceDifference() {
-        return BalanceDifference;
+        return balanceDifference;
     }
 }
