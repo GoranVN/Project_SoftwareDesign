@@ -15,17 +15,17 @@ public class View extends JFrame{
         this.controller = controller;
         JButton ticketButton = new JButton("New Ticket");
         JButton addPersonButton = new JButton("Add Person");
-        JButton calculateTotal = new JButton("Calculate Total");
+        JButton updateTotal = new JButton("Update Total");
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.add(ticketButton);
         ticketButton.setBounds(125, 450, 100, 30);
         panel.add(addPersonButton);
         addPersonButton.setBounds(275, 450, 100, 30);
-        panel.add(calculateTotal);
-        calculateTotal.setBounds(175, 500, 150, 30);
+        panel.add(updateTotal);
+        updateTotal.setBounds(175, 500, 150, 30);
 
-        String[] header = {"Participants"};
+        String[] header = {"Participants", "Total"};
         String[][] data = {};
         model = new DefaultTableModel(data, header);
         table = new JTable(model);
@@ -43,18 +43,20 @@ public class View extends JFrame{
 
         ticketButton.addActionListener(controller);
         addPersonButton.addActionListener(controller);
-        calculateTotal.addActionListener(controller);
+        updateTotal.addActionListener(controller);
     }
 
-    public void addPersonToTable(String[] name){
-        model.addRow(name);
+    public void addPersonToTable(String[] nameAndTotal){
+        model.addRow(nameAndTotal);
     }
 
     public void addTicketToTable(String ticketName, Vector<String> balances){
         model.addColumn(ticketName, balances);
     }
 
-    public JTable getTable(){
-        return table;
+    public void updateTotal(Vector<String> totalBalances){
+        for(int i=0; i<model.getRowCount(); i++){
+            model.setValueAt(totalBalances.get(i), i, 1 );
+        }
     }
 }

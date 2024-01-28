@@ -5,6 +5,8 @@ import Databases.TicketDatabase;
 import Person.Person;
 import Tickets.TicketFactory;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 import java.awt.event.ActionEvent;
@@ -40,12 +42,11 @@ public class Controller extends WindowController implements ActionListener{
                 view.setEnabled(false);
                 break;
             case "Cancel":
+                view.setEnabled(true);
                 if (ticketSubframe != null) {
-                    view.setEnabled(true);
                     ticketSubframe.dispose();
                     ticketSubframe = null;
                 } else if (personSubframe != null) {
-                    view.setEnabled(true);
                     personSubframe.dispose();
                     personSubframe = null;
                 }
@@ -55,7 +56,7 @@ public class Controller extends WindowController implements ActionListener{
                     String name = personSubframe.getTextAreaValue();
                     personDB.addEntry(new Person(name, 0.0));
                     view.setEnabled(true);
-                    view.addPersonToTable(new String[]{name});
+                    view.addPersonToTable(new String[]{name, String.valueOf(personDB.getPerson(name).getBalance())});
                     personSubframe.dispose();
                     personSubframe = null;
                 } else if (ticketSubframe != null) {
@@ -99,18 +100,14 @@ public class Controller extends WindowController implements ActionListener{
                     ticketSubframe = null;
                 }
                 break;
-            case "Calculate Total":
+            case "Update Total":
                 Vector<String> totalBalances = new Vector<>();
                 DecimalFormat format = new DecimalFormat("#.##");
-                JTable table = view.getTable();
-                TableColumnModel columnModel = table.getColumnModel();
                 for (int i = 0; i < getPersonDB().size(); i++) {
-                    totalBalances.add(i, format.format(personDB.getEntries().get(i).getBalance()));
+                    totalBalances.add(format.format(personDB.getEntries().get(i).getBalance()));
                 }
-                int columnIndex = columnModel.getColumnIndex("Total");
-                if (columnIndex != -1) {
-                    columnModel.removeColumn(columnModel.getColumn(columnIndex));
-                }
+                view.updateTotal(totalBalances);
+                break;
         }
     }
     @Override
