@@ -27,11 +27,6 @@ public class EvenlySplitDecorator implements TicketDecorator{
                 differencePerPerson.put(pers, - pricePerPerson);
             }
         }
-        if (paidFor.contains(person)) {
-            differencePerPerson.put(person, price - pricePerPerson);
-        } else {
-            differencePerPerson.put(person, price);
-        }
         return differencePerPerson;
     }
 

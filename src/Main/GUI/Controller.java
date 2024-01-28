@@ -4,12 +4,13 @@ import Databases.PersonDatabase;
 import Databases.TicketDatabase;
 import Person.Person;
 import Tickets.TicketFactory;
+import javax.swing.*;
+import javax.swing.table.TableColumnModel;
 
-import javax.annotation.processing.SupportedSourceVersion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Controller extends WindowController implements ActionListener{
@@ -65,11 +66,12 @@ public class Controller extends WindowController implements ActionListener{
                     if (evenlySplit) {
                         double totalPrice = ticketSubframe.getTotalprice();
                         ticketDB.newEvenlySplitTicket(typeOfTicket, totalPrice, personDB.getPerson(personWhoPaid), personDB.getEntries());
+                        DecimalFormat format = new DecimalFormat("#.##");
                         for(int i=0; i<getPersonDB().size(); i++){
                             Vector<String> person = getPersonDB();
                             if(!Objects.equals(person.get(i), personWhoPaid)){
-                                double value = totalPrice/getPersonDB().size();
-                                balances.add(i, Double.toString(value));
+                                String value = format.format(totalPrice/getPersonDB().size());
+                                balances.add(i, value);
                             }
                             else{
                                 balances.add(i, "Paid");
@@ -95,6 +97,19 @@ public class Controller extends WindowController implements ActionListener{
                     view.addTicketToTable(typeOfTicket, balances);
                     ticketSubframe.dispose();
                     ticketSubframe = null;
+                }
+                break;
+            case "Calculate Total":
+                Vector<String> totalBalances = new Vector<>();
+                DecimalFormat format = new DecimalFormat("#.##");
+                JTable table = view.getTable();
+                TableColumnModel columnModel = table.getColumnModel();
+                for (int i = 0; i < getPersonDB().size(); i++) {
+                    totalBalances.add(i, format.format(personDB.getEntries().get(i).getBalance()));
+                }
+                int columnIndex = columnModel.getColumnIndex("Total");
+                if (columnIndex != -1) {
+                    columnModel.removeColumn(columnModel.getColumn(columnIndex));
                 }
         }
     }
